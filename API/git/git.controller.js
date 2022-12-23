@@ -14,7 +14,7 @@ function postGitEventSchema(req, res, next) {
     const schema = Joi.object({
         ref: Joi.string().required(),
         repository: Joi.object({
-            id: Joi.string().required(),
+            id: Joi.number().required(),
             name: Joi.string().required(),
         }).required(),
         head_commit: Joi.object({
