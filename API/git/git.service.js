@@ -1,7 +1,7 @@
 // Configuration
 const config = require(process.env.NODE_ENV === 'PROD' ? '../../config/config.json' : '../../config/config.json');
 const { branch } = config;
-const { telegram_token } = config.telegram;
+const { telegram_token, telegram_chat_id } = config.telegram;
 // Telegram
 const telegrambot = require("node-telegram-bot-api");
 const bot = new telegrambot(telegram_token, { polling: true });
@@ -31,5 +31,5 @@ function _isStarBranch(ref) {
 function _sendTelegramMessage({ repoName, committerUsername, commitMessage }) {
     const message = `${committerUsername} pushed new ${commitMessage} to ${repoName}`;
 
-    bot.sendMessage(chat_id, message);
+    bot.sendMessage(telegram_chat_id, message);
 }
