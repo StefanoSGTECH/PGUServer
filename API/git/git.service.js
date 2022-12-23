@@ -1,5 +1,3 @@
-const db = require('../../_helpers/db');
-
 module.exports = {
     gitEvent,
 };
