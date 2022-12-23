@@ -20,6 +20,7 @@ function postGitEventSchema(req, res, next) {
         head_commit: Joi.object({
             timestamp: Joi.string().required(),
             url: Joi.string().required(),
+            message: Joi.string().required(),
             author: Joi.object({
                 name: Joi.string().required(),
                 email: Joi.string().required(),
