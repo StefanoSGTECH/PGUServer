@@ -26,7 +26,7 @@ app.use(errorHandler);
 // start server
 if (process.env.NODE_ENV === 'DEV') {
     const port = 4000;
-    app.listen(port, () => console.log('Server listening on port ' + port));
+    app.listen(port, "git.personalgroup.it", () => console.log('Server listening on port ' + port));
 } else {
     var privateKey  = fs.readFileSync('config/sslcert/privkey.pem', 'utf8');
     var certificate = fs.readFileSync('config/sslcert/cert.pem', 'utf8');
@@ -35,6 +35,6 @@ if (process.env.NODE_ENV === 'DEV') {
     var httpServer = http.createServer(app);
     var httpsServer = https.createServer(credentials, app);
 
-    httpServer.listen(4000);
-    httpsServer.listen(4001);
+    httpServer.listen(4000, "git.personalgroup.it");
+    httpsServer.listen(4001, "git.personalgroup.it");
 }
