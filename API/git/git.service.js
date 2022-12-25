@@ -3,8 +3,8 @@ const config = require(process.env.NODE_ENV === 'PROD' ? '../../config/config.js
 const { branch } = config;
 const { telegram_token, telegram_chat_id } = config.telegram;
 // Telegram
-const telegrambot = require("node-telegram-bot-api");
-const bot = new telegrambot(telegram_token, { polling: true });
+const TelegramBot = require('node-telegram-bot-api');
+const bot = new TelegramBot(telegram_token, {polling: true});
 
 module.exports = {
     gitEvent

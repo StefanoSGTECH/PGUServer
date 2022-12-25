@@ -13,8 +13,8 @@ const fs = require('fs');
 const config = require(process.env.NODE_ENV === 'PROD' ? 'config/config.json' : 'config/config.json');
 const { telegram_token } = config.telegram;
 // Telegram
-const telegrambot = require("node-telegram-bot-api");
-const bot = new telegrambot(telegram_token, { polling: true });
+const TelegramBot = require('node-telegram-bot-api');
+const bot = new TelegramBot(telegram_token, {polling: true});
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -29,12 +29,6 @@ app.get("/", (req, res) => {
 
 // Global error handler
 app.use(errorHandler);
-
-bot.on("message",(msg) => {
-    if(msg.text === "chat_id") {
-        bot.sendMessage("chat_id: " + msg.chat.id);
-    }
-});
 
 // Start Server
 if (process.env.NODE_ENV === 'DEV') {
@@ -51,3 +45,10 @@ if (process.env.NODE_ENV === 'DEV') {
     httpServer.listen(4000, "git.personalgroup.it");
     httpsServer.listen(4001, "git.personalgroup.it");
 }
+
+bot.on('message', (msg) => {
+    const chatId = msg.chat.id;
+  
+    // send a message to the chat acknowledging receipt of their message
+    bot.sendMessage(chatId, 'Received your message'+String(chatId));
+});
