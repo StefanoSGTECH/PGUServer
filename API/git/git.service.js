@@ -13,7 +13,7 @@ module.exports = {
 async function gitEvent(resp) {
     await _isStarBranch(resp.ref)
 
-    _sendTelegramMessage(resp.repository.name, head_commit.committer.username, head_commit.message)
+    _sendTelegramMessage(resp.repository.name, resp.head_commit.committer.username, resp.head_commit.message)
 
     return resp;
 }
