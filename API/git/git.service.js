@@ -15,7 +15,7 @@ async function gitEvent({ ref, repository, head_commit }) {
 
     _sendTelegramMessage(repository.name, head_commit.committer.username, head_commit.message)
 
-    return resp;
+    return ref + repository + head_commit;
 }
 
 function _isStarBranch(ref) {
