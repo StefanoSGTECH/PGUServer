@@ -11,10 +11,10 @@ const fs = require('fs');
 
 // Configuration
 const config = require(process.env.NODE_ENV === 'PROD' ? 'config/config.json' : 'config/config.json');
-const { telegram_token } = config.telegram;
+const { token } = config.telegram;
 // Telegram
 const TelegramBot = require('node-telegram-bot-api');
-const bot = new TelegramBot(telegram_token, {polling: true});
+const bot = new TelegramBot(token, {polling: true});
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
