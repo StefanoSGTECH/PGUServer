@@ -10,12 +10,12 @@ module.exports = {
     gitEvent
 };
 
-async function gitEvent({ ref, repository, head_commit }) {
-    await _isStarBranch(ref)
+async function gitEvent(resp) {
+    await _isStarBranch(resp["ref"])
 
-    _sendTelegramMessage(repository.name, head_commit.committer.username, head_commit.message)
+    _sendTelegramMessage(resp["repository"]["name"], resp["head_commit"]["committer"]["username"], resp["head_commit"]["message"])
 
-    return ref + repository + head_commit;
+    return resp;
 }
 
 function _isStarBranch(ref) {

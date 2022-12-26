@@ -11,10 +11,10 @@ const fs = require('fs');
 
 // Configuration
 const config = require(process.env.NODE_ENV === 'PROD' ? 'config/config.json' : 'config/config.json');
-const { token } = config.telegram;
+// const { token } = config.telegram;
 // Telegram
-const TelegramBot = require('node-telegram-bot-api');
-const bot = new TelegramBot(token, {polling: true});
+// const TelegramBot = require('node-telegram-bot-api');
+// const bot = new TelegramBot(token, {polling: true});
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -46,9 +46,9 @@ if (process.env.NODE_ENV === 'DEV') {
     httpsServer.listen(4001, "git.personalgroup.it");
 }
 
-bot.on('message', (msg) => {
-    const chatId = msg.chat.id;
+// bot.on('message', (msg) => {
+//     const chatId = msg.chat.id;
   
-    // send a message to the chat acknowledging receipt of their message
-    bot.sendMessage(chatId, 'chat_id: '+String(chatId));
-});
+//     // send a message to the chat acknowledging receipt of their message
+//     bot.sendMessage(chatId, 'chat_id: '+String(chatId));
+// });
