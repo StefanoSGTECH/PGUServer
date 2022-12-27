@@ -28,7 +28,7 @@ function _isStarBranch(ref) {
     }
 }
 
-function _sendTelegramMessage({ repoName, committerUsername, commitMessage }) {
+function _sendTelegramMessage(repoName, committerUsername, commitMessage) {
     const message = `${committerUsername} pushed new ${commitMessage} to ${repoName}`;
 
     bot.sendMessage(chat_id, message);
